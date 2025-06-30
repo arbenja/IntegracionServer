@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoParts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #353535;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .navbar-toggler {
+      border-color: #fff;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    form.logout-form {
+      display: inline;
+    }
+  </style>
+</head>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+  <!-- Carrusel -->
+  <div class="container my-5" style="max-width: 1500px; max-height: 750px;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <!-- Imágenes -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.pexels.com/photos/261986/pexels-photo-261986.jpeg" class="d-block w-100" alt="Imagen 1" style="height: 450px; object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg" class="d-block w-100" alt="Imagen 2" style="height: 450px; object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.pexels.com/photos/13781/pexels-photo-13781.jpeg" class="d-block w-100" alt="Imagen 3" style="height: 450px; object-fit: cover;">
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Texto descriptivo -->
+  <div class="container text-center text-white" style="max-width: 1000px;">
+    <h1>AutoParts</h1>
+    <h5>
+      Bienvenidos a nuestra nueva página, más rápida y sencilla para ti.
+      Si necesitas mayor información no dudes en contactarnos,
+      te responderemos igual de rápido que nuestros autos.
+    </h5>
+    <p>
+      En Autoparts te ofrecemos los mejores precios para tus autos:
+      calidad, rapidez, seguridad. ¡Todo en un solo lugar!
+    </p>
+  </div>
+
+  <!-- Sección Autos -->
+  <div class="container my-5">
+    <div class="row align-items-center bg-dark text-white rounded shadow p-4 mb-4">
+      <div class="col-md-7">
+        <h2>¿Buscas un auto?</h2>
+        <p>Tenemos los mejores autos para ti, con la mejor calidad y precio del mercado. ¡Cotiza ahora y encuentra el auto ideal!</p>
+        <a href="{% url 'lista_productos' %}" class="btn btn-primary mt-2">Cotizar autos</a>
+      </div>
+      <div class="col-md-5 text-center">
+        <img src="https://images.pexels.com/photos/32771155/pexels-photo-32771155.jpeg" alt="Auto" class="img-fluid rounded" style="max-height: 250px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Repuestos -->
+  <div class="container my-5">
+    <div class="row align-items-center flex-row-reverse bg-dark text-white rounded shadow p-4 mb-4">
+      <div class="col-md-7">
+        <h2>¿Necesitas repuestos?</h2>
+        <p>Encuentra repuestos originales y alternativos para tu vehículo. ¡Revisa nuestro catálogo y mantén tu auto siempre en marcha!</p>
+        <a href="{% url 'lista_repuestos' %}" class="btn btn-success mt-2">Ver repuestos</a>
+      </div>
+      <div class="col-md-5 text-center">
+        <img src="https://images.pexels.com/photos/4489721/pexels-photo-4489721.jpeg" alt="Repuesto" class="img-fluid rounded" style="max-height: 250px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Productos Destacados -->
+  <div class="container my-5">
+    <h3 class="text-white mb-4">Productos Destacados</h3>
+    <div class="row">
+      {% for producto in productos_destacados %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            {% if producto.imagen %}
+              <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}" style="height: 200px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
+              <p class="card-text">{{ producto.descrip }}</p>
+              <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-white">No hay productos destacados.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Repuestos Destacados -->
+  <div class="container my-5">
+    <h3 class="text-white mb-4">Repuestos Destacados</h3>
+    <div class="row">
+      {% for repuesto in repuestos_destacados %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            {% if repuesto.imagen %}
+              <img src="{{ repuesto.imagen.url }}" class="card-img-top" alt="{{ repuesto.nombre }}" style="height: 200px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ repuesto.nombre }}</h5>
+              
+              <p class="card-text"><strong>Precio:</strong> ${{ repuesto.precio }}</p>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-white">No hay repuestos destacados.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% endblock %}
+
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</body>
+</html>

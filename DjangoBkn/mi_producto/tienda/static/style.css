@@ -1,0 +1,57 @@
+body {
+  background-color: #353535;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.navbar {
+  background-color: #000000;
+}
+
+.navbar-toggler {
+  border-color: #fff;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.carousel-container {
+  max-width: 1500px;
+  margin: 40px auto;
+  max-height: 750px;
+}
+
+.carousel-item img {
+  height: 450px;
+  object-fit: cover;
+}
+
+.descripcion-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.titulo {
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.descripcion,
+.breve h5 {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+}
+
+.footer {
+  background-color: #000000;
+  padding: 20px;
+}
+.table tbody td:nth-child(n+2) {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Para el total */
+  .mt-4.fs-4 {
+    font-family: Arial, sans-serif;
+  }

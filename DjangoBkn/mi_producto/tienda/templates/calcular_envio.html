@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Calcular Tarifas de Envío</h2>
+    <form id="tarifasForm">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="codigoCiudadOrigen" class="form-label">Código Ciudad Origen</label>
+            <input type="number" id="codigoCiudadOrigen" name="codigoCiudadOrigen" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="codigoCiudadDestino" class="form-label">Código Ciudad Destino</label>
+            <input type="number" id="codigoCiudadDestino" name="codigoCiudadDestino" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="kilos" class="form-label">Peso del Paquete (kg)</label>
+            <input type="number" id="kilos" name="kilos" class="form-control" step="0.01" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="consultarTarifas()">Consultar Tarifas</button>
+    </form>
+    <div id="resultados" class="mt-4"></div>
+</div>
+<script>
+  function consultarTarifas() {
+    const formData = new FormData(document.getElementById('tarifasForm'));
+    fetch('/consultar-tarifas/', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      const resultadosDiv = document.getElementById('resultados');
+      resultadosDiv.innerHTML = '';
+      if (data.listaTarifas) {
+        data.listaTarifas.forEach(tarifa => {
+          const tarifaDiv = document.createElement('div');
+          tarifaDiv.innerHTML = `
+            <p><strong>Tipo Entrega:</strong> ${tarifa.tipoEntrega.descripcionTipoEntrega}</p>
+            <p><strong>Tipo Servicio:</strong> ${tarifa.tipoServicio.descripcionTipoServicio}</p>
+            <p><strong>Costo Total:</strong> $${tarifa.costoTotal}</p>
+            <p><strong>Días de Entrega:</strong> ${tarifa.diasEntrega}</p>
+            <hr>
+          `;
+          resultadosDiv.appendChild(tarifaDiv);
+        });
+      } else {
+        resultadosDiv.innerHTML = '<p>No se encontraron tarifas.</p>';
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  }
+</script>
+{% endblock %}

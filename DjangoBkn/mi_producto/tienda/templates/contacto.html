@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto - AutoParts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #353535;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .navbar-toggler {
+      border-color: #fff;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    form.logout-form {
+      display: inline;
+    }
+  </style>
+</head>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+
+<!-- Navbar -->
+
+
+<!-- Contenido -->
+<div class="container py-5" style="max-width: 1200px;">
+  <div class="row text-center text-lg-start g-4">
+    <!-- ¿Quiénes somos? -->
+    <div class="col-12 col-lg-4">
+      <h2 style="color: #FFD700; font-weight: bold;">¿Quiénes somos?</h2>
+      <p class="text-white" style="font-size: 1.1rem;">
+        Somos <b>AutoParts</b>, una tienda dedicada a ofrecer los mejores productos y servicios para tu vehículo. Nuestro equipo está formado por amantes de los autos que buscan mejorar la experiencia y seguridad de tu conducción.
+      </p>
+    </div>
+    <!-- Nuestro objetivo -->
+    <div class="col-12 col-lg-4">
+      <h2 style="color: #FFD700; font-weight: bold;">Nuestro objetivo</h2>
+      <p class="text-white" style="font-size: 1.1rem;">
+        Brindar una experiencia de compra fácil, rápida y segura, entregando productos de calidad y atención personalizada para que tu auto siempre esté en óptimas condiciones.
+      </p>
+    </div>
+    <!-- Contáctanos -->
+    <div class="col-12 col-lg-2">
+      <h2 style="color: #FFD700; font-weight: bold;">Contáctanos</h2>
+      <p class="text-white mb-2" style="font-size: 1.1rem;"><i class="bi bi-envelope"></i> contacto@AutoParts.cl</p>
+      <p class="text-white mb-2" style="font-size: 1.1rem;"><i class="bi bi-telephone"></i> +56 9 1234 5678</p>
+      <p class="text-white mb-0" style="font-size: 1.1rem;"><i class="bi bi-geo-alt"></i> Santiago, Chile</p>
+    </div>
+    <!-- Síguenos -->
+    <div class="col-12 col-lg-2">
+      <h2 style="color: #FFD700; font-weight: bold;">Síguenos</h2>
+      <div class="mb-2">
+        <a href="#" class="text-white fs-3 mx-1" title="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-white fs-3 mx-1" title="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-white fs-3 mx-1" title="X"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="text-white fs-3 mx-1" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  {% endblock %}
+
+ <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</body>
+</html>
